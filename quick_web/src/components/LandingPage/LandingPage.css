@@ -1,0 +1,35 @@
+.landing-container {
+  text-align: center;
+  padding: 50px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.landing-container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.landing-container p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.landing-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}

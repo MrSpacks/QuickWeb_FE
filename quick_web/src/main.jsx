@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { AuthProvider } from "./context/AuthContext.jsx";
-import App from "./App.jsx";
 import { I18nextProvider } from "react-i18next";
+import { AuthProvider } from "./context/AuthProvider";
+import App from "./App";
 import i18n from "./i18n";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

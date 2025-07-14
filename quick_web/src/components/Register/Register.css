@@ -1,0 +1,46 @@
+.register-container {
+  max-width: 400px;
+  margin: 50px auto; /* Центрируем форму */
+  padding: 20px;
+  text-align: center;
+}
+
+.register-container h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  text-align: left; /* Выравниваем метки и поля слева */
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.btn {
+  padding: 10px 20px;
+  background-color: #007bff; /* Синяя кнопка */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #0056b3; /* Цвет при наведении */
+}
+
+.error {
+  color: red;
+  margin-bottom: 15px;
+}

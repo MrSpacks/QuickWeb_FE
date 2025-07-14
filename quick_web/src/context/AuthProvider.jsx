@@ -1,7 +1,7 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import { AuthContext } from "./AuthContext";
 
-export const AuthContext = createContext();
-
+// Компонент-провайдер с JSX
 export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token") || null);
 

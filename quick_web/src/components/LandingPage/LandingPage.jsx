@@ -1,7 +1,8 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { Navigate, Link } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext"; // Импортируем контекст авторизации
+import { AuthContext } from "../../context/AuthContext";
+import { AuthProvider } from "../../context/AuthProvider";
 import "./LandingPage.css";
 import LanguageSwitcher from "../LanguageSwitcher"; // Импортируем компонент переключения языка
 

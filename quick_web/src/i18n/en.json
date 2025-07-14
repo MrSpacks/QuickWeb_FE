@@ -4,5 +4,24 @@
     "description": "A simple service to create personalized business cards with unique URLs and visit statistics.",
     "register": "Register",
     "login": "Login"
+  },
+  "register": {
+    "title": "Register",
+    "username": "Username",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Sign Up",
+    "haveAccount": "Already have an account?",
+    "login": "Log in",
+    "error": "Registration failed"
+  },
+  "login": {
+    "title": "Login",
+    "username": "Username",
+    "password": "Password",
+    "submit": "Log In",
+    "noAccount": "Don't have an account?",
+    "register": "Sign up",
+    "error": "Invalid credentials"
   }
 }

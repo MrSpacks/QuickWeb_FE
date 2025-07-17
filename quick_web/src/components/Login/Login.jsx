@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Navigate, Link } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
-import LanguageSwitcher from "../../components/LanguageSwitcher";
+import LanguageSwitcher from "../LanguageSwitcher/LanguageSwitcher";
 import "./Login.css";
 
 // Функциональный компонент для страницы логина

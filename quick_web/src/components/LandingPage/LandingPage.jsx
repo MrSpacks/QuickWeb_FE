@@ -2,9 +2,9 @@ import { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { Navigate, Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-import { AuthProvider } from "../../context/AuthProvider";
+// import { AuthProvider } from "../../context/AuthProvider";
 import "./LandingPage.css";
-import LanguageSwitcher from "../LanguageSwitcher"; // Импортируем компонент переключения языка
+import LanguageSwitcher from "../../components/LanguageSwitcher/LanguageSwitcher"; // Импортируем компонент переключения языка
 
 const LandingPage = () => {
   const { token } = useContext(AuthContext); // Получаем токен из контекста авторизации

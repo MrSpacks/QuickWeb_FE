@@ -25,6 +25,20 @@
     "error": "Invalid credentials"
   },
   "logout": {
-    "button": "Logout"
+    "button": "Log Out"
+  },
+  "dashboard": {
+    "title": "Your Dashboard",
+    "stats": "Statistics",
+    "totalVisits": "Total Visits",
+    "cards": "Your Business Cards",
+    "createCard": "Create New Card",
+    "viewCard": "View Card",
+    "edit": "Edit",
+    "delete": "Delete",
+    "noCards": "No cards created yet.",
+    "error": "Failed to load data",
+    "deleteError": "Failed to delete card",
+    "confirmDelete": "Are you sure you want to delete this card?"
   }
 }

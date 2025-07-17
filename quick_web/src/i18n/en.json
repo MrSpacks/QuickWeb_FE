@@ -23,5 +23,8 @@
     "noAccount": "Don't have an account?",
     "register": "Sign up",
     "error": "Invalid credentials"
+  },
+  "logout": {
+    "button": "Logout"
   }
 }

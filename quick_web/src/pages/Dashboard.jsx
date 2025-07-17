@@ -1,3 +1,9 @@
 import React from "react";
-const Dashboard = () => <div>Dashboard Page</div>;
+import LogoutButton from "../components/LogoutButton";
+const Dashboard = () => (
+  <div>
+    <LogoutButton />
+    Dashboard Page
+  </div>
+);
 export default Dashboard;

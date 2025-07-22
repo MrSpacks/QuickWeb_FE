@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext";
+import { AuthContext } from "../context/AuthContext";
+import Button from "./Button/Button";
 
 // Компонент кнопки выхода
 const LogoutButton = () => {
@@ -15,19 +16,12 @@ const LogoutButton = () => {
     navigate("/login"); // Редиректим на страницу логина
   };
 
-  const style = {
-    padding: "10px 20px",
-    backgroundColor: "#dc3545", // Красный цвет для кнопки выхода
-    color: "white",
-    border: "none",
-    borderRadius: "5px",
-    cursor: "pointer",
-    fontSize: "1rem",
-  };
   return (
-    <button className="logout-btn" onClick={handleLogout} style={style}>
-      {t("logout.button")}
-    </button>
+    <Button
+      text={t("logout.button")}
+      onClick={handleLogout}
+      background="#dc3545"
+    />
   );
 };
 

@@ -3,8 +3,9 @@ import { useTranslation } from "react-i18next";
 import { Navigate, Link } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
-import LanguageSwitcher from "../components/LanguageSwitcher/LanguageSwitcher";
-import LogoutButton from "../components/LogoutButton/LogoutButton";
+import LanguageSwitcher from "../components/LanguageSwitcher";
+import LogoutButton from "../components/LogoutButton";
+import Button from "../components/Button/Button";
 import "./Dashboard.css";
 
 const Dashboard = () => {
@@ -14,12 +15,25 @@ const Dashboard = () => {
   const [stats, setStats] = useState({ total_visits: 0 });
   const [error, setError] = useState(null);
   const [showCreateForm, setShowCreateForm] = useState(false);
+  const [showEditForm, setShowEditForm] = useState(false);
+  const [editCardId, setEditCardId] = useState(null);
   const [formData, setFormData] = useState({
     title: "",
     slug: "",
     description: "",
-    template_id: "default", // Значение по умолчанию
-    font_style: "Arial", // Значение по умолчанию
+    template_id: "default",
+    font_style: "Arial",
+    subtitle: "",
+    email: "",
+    phone: "",
+    background_color: "#FFFFFF",
+  });
+  const [editFormData, setEditFormData] = useState({
+    title: "",
+    slug: "",
+    description: "",
+    template_id: "default",
+    font_style: "Arial",
     subtitle: "",
     email: "",
     phone: "",
@@ -106,8 +120,57 @@ const Dashboard = () => {
     }
   };
 
+  const handleEditClick = (card) => {
+    setEditCardId(card.id);
+    setEditFormData({
+      title: card.title,
+      slug: card.slug || "",
+      description: card.description || "",
+      template_id: card.template_id,
+      font_style: card.font_style,
+      subtitle: card.subtitle || "",
+      email: card.email || "",
+      phone: card.phone || "",
+      background_color: card.background_color || "#FFFFFF",
+    });
+    setShowEditForm(true);
+    setError(null);
+  };
+
+  const handleEditChange = (e) => {
+    setEditFormData({ ...editFormData, [e.target.name]: e.target.value });
+  };
+
+  const handleEditSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.put(
+        `http://localhost:8000/api/cards/${editCardId}/`,
+        editFormData,
+        {
+          headers: { Authorization: `Token ${token}` },
+        }
+      );
+      setCards(
+        cards.map((card) => (card.id === editCardId ? response.data : card))
+      );
+      setShowEditForm(false);
+      setEditCardId(null);
+      setError(null);
+    } catch (error) {
+      setError(error.response?.data?.error || t("dashboard.editError"));
+    }
+  };
+
   const toggleCreateForm = () => {
     setShowCreateForm(!showCreateForm);
+    setShowEditForm(false);
+    setError(null);
+  };
+
+  const toggleEditForm = () => {
+    setShowEditForm(!showEditForm);
+    setShowCreateForm(false);
     setError(null);
   };
 
@@ -126,9 +189,11 @@ const Dashboard = () => {
       </div>
       <div className="cards-section">
         <h2>{t("dashboard.cards")}</h2>
-        <button className="btn create-btn" onClick={toggleCreateForm}>
-          {t("dashboard.createCard")}
-        </button>
+        <Button
+          text={t("dashboard.createCard")}
+          onClick={toggleCreateForm}
+          background="#28a745"
+        />
         {showCreateForm && (
           <div className="create-form">
             <h3>{t("dashboard.createCard")}</h3>
@@ -222,16 +287,122 @@ const Dashboard = () => {
                   onChange={handleCreateChange}
                 />
               </div>
-              <button type="submit" className="btn save-btn">
-                {t("dashboard.save")}
-              </button>
-              <button
-                type="button"
-                className="btn cancel-btn"
+              <Button
+                type="submit"
+                text={t("dashboard.save")}
+                background="#28a745"
+              />
+              <Button
+                text={t("dashboard.cancel")}
+                background="#6c757d"
                 onClick={toggleCreateForm}
-              >
-                {t("dashboard.cancel")}
-              </button>
+              />
+            </form>
+          </div>
+        )}
+        {showEditForm && (
+          <div className="create-form">
+            <h3>{t("dashboard.editCard")}</h3>
+            <form onSubmit={handleEditSubmit}>
+              <div className="form-group">
+                <label>{t("dashboard.titleCard")}</label>
+                <input
+                  type="text"
+                  name="title"
+                  value={editFormData.title}
+                  onChange={handleEditChange}
+                  required
+                />
+              </div>
+              <div className="form-group">
+                <label>{t("dashboard.slug")}</label>
+                <input
+                  type="text"
+                  name="slug"
+                  value={editFormData.slug}
+                  onChange={handleEditChange}
+                />
+              </div>
+              <div className="form-group">
+                <label>{t("dashboard.subtitle")}</label>
+                <input
+                  type="text"
+                  name="subtitle"
+                  value={editFormData.subtitle}
+                  onChange={handleEditChange}
+                />
+              </div>
+              <div className="form-group">
+                <label>{t("dashboard.description")}</label>
+                <textarea
+                  name="description"
+                  value={editFormData.description}
+                  onChange={handleEditChange}
+                />
+              </div>
+              <div className="form-group">
+                <label>{t("dashboard.email")}</label>
+                <input
+                  type="email"
+                  name="email"
+                  value={editFormData.email}
+                  onChange={handleEditChange}
+                />
+              </div>
+              <div className="form-group">
+                <label>{t("dashboard.phone")}</label>
+                <input
+                  type="text"
+                  name="phone"
+                  value={editFormData.phone}
+                  onChange={handleEditChange}
+                />
+              </div>
+              <div className="form-group">
+                <label>{t("dashboard.template_id")}</label>
+                <select
+                  name="template_id"
+                  value={editFormData.template_id}
+                  onChange={handleEditChange}
+                  required
+                >
+                  <option value="default">Default</option>
+                  <option value="modern">Modern</option>
+                  <option value="classic">Classic</option>
+                </select>
+              </div>
+              <div className="form-group">
+                <label>{t("dashboard.font_style")}</label>
+                <select
+                  name="font_style"
+                  value={editFormData.font_style}
+                  onChange={handleEditChange}
+                  required
+                >
+                  <option value="Arial">Arial</option>
+                  <option value="Times New Roman">Times New Roman</option>
+                  <option value="Roboto">Roboto</option>
+                </select>
+              </div>
+              <div className="form-group">
+                <label>{t("dashboard.background_color")}</label>
+                <input
+                  type="color"
+                  name="background_color"
+                  value={editFormData.background_color}
+                  onChange={handleEditChange}
+                />
+              </div>
+              <Button
+                type="submit"
+                text={t("dashboard.save")}
+                background="#28a745"
+              />
+              <Button
+                text={t("dashboard.cancel")}
+                background="#6c757d"
+                onClick={toggleEditForm}
+              />
             </form>
           </div>
         )}
@@ -246,13 +417,16 @@ const Dashboard = () => {
                 <p>
                   <Link to={`/${card.slug}`}>{t("dashboard.viewCard")}</Link>
                 </p>
-                <button className="btn edit-btn">{t("dashboard.edit")}</button>
-                <button
-                  className="btn delete-btn"
+                <Button
+                  text={t("dashboard.edit")}
+                  onClick={() => handleEditClick(card)}
+                  background="#007bff"
+                />
+                <Button
+                  text={t("dashboard.delete")}
                   onClick={() => handleDelete(card.id)}
-                >
-                  {t("dashboard.delete")}
-                </button>
+                  background="#dc3545"
+                />
               </div>
             ))}
           </div>

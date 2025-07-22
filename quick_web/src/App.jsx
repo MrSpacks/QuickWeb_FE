@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import LandingPage from "./components/LandingPage/LandingPage";
-import Login from "./components/Login/Login";
-import Register from "./components/Register/Register";
+import LandingPage from "./pages/LandingPage/LandingPage";
+import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
 import Dashboard from "./pages/Dashboard";
 import PublicCard from "./pages/PublicCard";
 import "./App.css";

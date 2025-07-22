@@ -4,7 +4,7 @@ import { Navigate, Link } from "react-router-dom"; // Navigate для редир
 import axios from "axios"; // Библиотека для HTTP-запросов к API.
 import { AuthContext } from "../../context/AuthContext";
 // import { AuthProvider } from "../../context/AuthProvider";
-import LanguageSwitcher from "../../components/LanguageSwitcher/LanguageSwitcher"; // Компонент для переключения языка.
+import LanguageSwitcher from "../../components/LanguageSwitcher"; // Компонент для переключения языка.
 import "./Register.css"; // Стили для формы.
 
 // Функциональный компонент Register.

@@ -33,6 +33,7 @@
     "totalVisits": "Total Visits",
     "cards": "Your Business Cards",
     "createCard": "Create New Card",
+    "editCard": "Edit Card",
     "titleCard": "Card Title",
     "slug": "URL Slug",
     "subtitle": "Subtitle",
@@ -51,6 +52,7 @@
     "error": "Failed to load data",
     "deleteError": "Failed to delete card",
     "createError": "Failed to create card",
+    "editError": "Failed to edit card",
     "confirmDelete": "Are you sure you want to delete this card?"
   }
 }

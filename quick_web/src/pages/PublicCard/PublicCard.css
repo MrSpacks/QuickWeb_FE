@@ -1,0 +1,126 @@
+.public-card-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.card-content {
+  max-width: 600px;
+  width: 100%;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.default .card-content {
+  background-color: #fff;
+}
+
+.modern .card-content {
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  border: 1px solid #ddd;
+}
+
+.classic .card-content {
+  background-color: #f8f9fa;
+  border: 2px solid #333;
+}
+
+.card-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.card-content h2 {
+  font-size: 1.5rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.description {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.contact-info {
+  margin-bottom: 20px;
+}
+
+.contact-info p {
+  margin: 10px 0;
+}
+
+.contact-info a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+.social-links {
+  margin-top: 20px;
+}
+
+.social-links h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.social-links-grid {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.social-link {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.social-link.twitter {
+  background-color: #1da1f2;
+}
+
+.social-link.linkedin {
+  background-color: #0077b5;
+}
+
+.social-link:hover {
+  opacity: 0.9;
+}
+
+.error {
+  color: red;
+  text-align: center;
+  font-size: 1.2rem;
+  margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+  .card-content {
+    padding: 20px;
+  }
+
+  .card-content h1 {
+    font-size: 2rem;
+  }
+
+  .card-content h2 {
+    font-size: 1.2rem;
+  }
+
+  .social-links-grid {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

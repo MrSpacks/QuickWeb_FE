@@ -54,5 +54,12 @@
     "createError": "Failed to create card",
     "editError": "Failed to edit card",
     "confirmDelete": "Are you sure you want to delete this card?"
+  },
+  "publicCard": {
+    "loading": "Loading...",
+    "error": "Card not found",
+    "email": "Email:",
+    "phone": "Phone:",
+    "socialLinks": "Social Links"
   }
 }

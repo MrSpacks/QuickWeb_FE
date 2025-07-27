@@ -3,7 +3,7 @@ import LandingPage from "./pages/LandingPage/LandingPage";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Dashboard from "./pages/Dashboard";
-import PublicCard from "./pages/PublicCard";
+import PublicCard from "./pages/PublicCard/PublicCard";
 import { AuthProvider } from "./context/AuthProvider";
 
 import "./App.css";

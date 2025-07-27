@@ -6,32 +6,44 @@ import "./PublicCard.css";
 
 const PublicCard = () => {
   const { t } = useTranslation();
-  const { slug } = useParams();
-  const [card, setCard] = useState(null);
-  const [error, setError] = useState(null);
+  const { slug } = useParams(); // получаем slug из URL
+  const [card, setCard] = useState(null); // данные карточки
+  const [error, setError] = useState(null); // сообщение об ошибке
 
   useEffect(() => {
     const fetchCard = async () => {
       try {
+        console.log("Slug из useParams:", slug);
+
+        // отправляем запрос БЕЗ авторизации (публичная карточка)
         const response = await axios.get(
-          `http://localhost:8000/api/cards/${slug}/`
+          // `http://127.0.0.1:8000/api/business-cards/${slug}/`,
+          `http://127.0.0.1:8000/${slug}/`,
+          {
+            headers: {
+              Authorization: undefined, // гарантируем отсутствие токена
+            },
+          }
         );
+
+        console.log("Данные карточки:", response.data);
         setCard(response.data);
-      } catch {
-        setError(t("publicCard.error"));
+      } catch (err) {
+        console.error("Ошибка при получении карточки:", err);
+        setError(t("publicCard.error")); // локализованное сообщение
       }
     };
+
     fetchCard();
   }, [slug, t]);
 
-  if (error) {
-    return <div className="error">{error}</div>;
-  }
+  // если произошла ошибка
+  if (error) return <div className="error">{error}</div>;
 
-  if (!card) {
-    return <div>{t("publicCard.loading")}</div>;
-  }
+  // если данные ещё не загружены
+  if (!card) return <div>{t("publicCard.loading")}</div>;
 
+  // основной рендер карточки
   return (
     <div
       className={`public-card-container ${card.template_id}`}
@@ -42,8 +54,10 @@ const PublicCard = () => {
     >
       <div className="card-content">
         <h1>{card.title}</h1>
+
         {card.subtitle && <h2>{card.subtitle}</h2>}
         {card.description && <p className="description">{card.description}</p>}
+
         <div className="contact-info">
           {card.email && (
             <p>
@@ -58,7 +72,8 @@ const PublicCard = () => {
             </p>
           )}
         </div>
-        {card.social_links && card.social_links.length > 0 && (
+
+        {card.social_links?.length > 0 && (
           <div className="social-links">
             <h3>{t("publicCard.socialLinks")}</h3>
             <div className="social-links-grid">

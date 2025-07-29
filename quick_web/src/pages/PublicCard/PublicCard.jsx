@@ -6,58 +6,61 @@ import "./PublicCard.css";
 
 const PublicCard = () => {
   const { t } = useTranslation();
-  const { slug } = useParams(); // получаем slug из URL
-  const [card, setCard] = useState(null); // данные карточки
-  const [error, setError] = useState(null); // сообщение об ошибке
+  const { slug } = useParams();
+  const [card, setCard] = useState(null);
+  const [error, setError] = useState(null);
+
+  const BASE_URL = "http://127.0.0.1:8000"; // Базовый URL для медиа
 
   useEffect(() => {
     const fetchCard = async () => {
       try {
-        console.log("Slug из useParams:", slug);
-
-        // отправляем запрос БЕЗ авторизации (публичная карточка)
-        const response = await axios.get(
-          // `http://127.0.0.1:8000/api/business-cards/${slug}/`,
-          `http://127.0.0.1:8000/${slug}/`,
-          {
-            headers: {
-              Authorization: undefined, // гарантируем отсутствие токена
-            },
-          }
-        );
-
-        console.log("Данные карточки:", response.data);
-        setCard(response.data);
+        console.log("Запрос к:", `http://127.0.0.1:8000/${slug}/`);
+        const response = await axios.get(`http://127.0.0.1:8000/${slug}/`);
+        console.log("Ответ:", response.data);
+        // Преобразуем относительные пути в абсолютные
+        setCard({
+          ...response.data,
+          avatar: response.data.avatar
+            ? `${BASE_URL}${response.data.avatar}`
+            : null,
+          background_image: response.data.background_image
+            ? `${BASE_URL}${response.data.background_image}`
+            : null,
+        });
       } catch (err) {
-        console.error("Ошибка при получении карточки:", err);
-        setError(t("publicCard.error")); // локализованное сообщение
+        console.error(
+          "Ошибка:",
+          err.response ? err.response.data : err.message
+        );
+        setError(t("publicCard.error"));
       }
     };
-
     fetchCard();
   }, [slug, t]);
 
-  // если произошла ошибка
   if (error) return <div className="error">{error}</div>;
-
-  // если данные ещё не загружены
   if (!card) return <div>{t("publicCard.loading")}</div>;
 
-  // основной рендер карточки
   return (
     <div
       className={`public-card-container ${card.template_id}`}
       style={{
         backgroundColor: card.background_color,
         fontFamily: card.font_style,
+        backgroundImage: card.background_image
+          ? `url(${card.background_image})`
+          : "none",
+        backgroundSize: "cover",
       }}
     >
       <div className="card-content">
+        {card.avatar && (
+          <img src={card.avatar} alt="Avatar" className="avatar" />
+        )}
         <h1>{card.title}</h1>
-
         {card.subtitle && <h2>{card.subtitle}</h2>}
         {card.description && <p className="description">{card.description}</p>}
-
         <div className="contact-info">
           {card.email && (
             <p>
@@ -72,7 +75,6 @@ const PublicCard = () => {
             </p>
           )}
         </div>
-
         {card.social_links?.length > 0 && (
           <div className="social-links">
             <h3>{t("publicCard.socialLinks")}</h3>

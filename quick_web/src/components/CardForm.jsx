@@ -63,6 +63,7 @@ const CardForm = ({ initialData, onSubmit, onCancel, isEditing }) => {
         data.append(key, formData[key]);
       }
     });
+    console.log("Отправляемые данные:", Object.fromEntries(data));
     onSubmit(data);
   };
 

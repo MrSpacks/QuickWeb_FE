@@ -47,11 +47,17 @@ const Dashboard = () => {
   const handleDelete = async (id) => {
     if (window.confirm(t("dashboard.confirmDelete"))) {
       try {
-        await axios.delete(`http://localhost:8000/api/cards/${id}/`, {
+        const card = cards.find((c) => c.id === id);
+        if (!card) throw new Error("Card not found");
+        await axios.delete(`http://localhost:8000/api/cards/${card.slug}/`, {
           headers: { Authorization: `Token ${token}` },
         });
         setCards(cards.filter((card) => card.id !== id));
-      } catch {
+      } catch (err) {
+        console.error(
+          "Ошибка удаления:",
+          err.response ? err.response.data : err.message
+        );
         setError(t("dashboard.deleteError"));
       }
     }
@@ -80,7 +86,7 @@ const Dashboard = () => {
   const handleEditSubmit = async (data) => {
     try {
       const response = await axios.put(
-        `http://localhost:8000/api/cards/${editCard.id}/`,
+        `http://localhost:8000/api/cards/${editCard.slug}/`,
         data,
         {
           headers: {

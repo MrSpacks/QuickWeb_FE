@@ -20,7 +20,7 @@ const CardForm = ({ initialData, onSubmit, onCancel, isEditing }) => {
     is_active:
       initialData.is_active !== undefined ? initialData.is_active : true, // По умолчанию активна
   });
-  const [newSocialLink, setNewSocialLink] = useState({ platform: "", url: "" });
+  const [newSocialLink, setNewSocialLink] = useState({ platform: "", url: "" }); // Состояние для новой ссылки
 
   const handleChange = (e) => {
     const { name, value, files, type, checked } = e.target;
@@ -31,16 +31,18 @@ const CardForm = ({ initialData, onSubmit, onCancel, isEditing }) => {
   };
 
   const handleSocialLinkChange = (e) => {
+    // Обновляем состояние для новой ссылки
     setNewSocialLink({ ...newSocialLink, [e.target.name]: e.target.value });
   };
 
   const addSocialLink = () => {
+    // Добавляем новую ссылку в массив social_links
     if (newSocialLink.platform && newSocialLink.url) {
       setFormData({
         ...formData,
         social_links: [...formData.social_links, newSocialLink],
       });
-      setNewSocialLink({ platform: "", url: "" });
+      setNewSocialLink({ platform: "", url: "" }); // Сбросить поля ввода после добавления
     }
   };
 

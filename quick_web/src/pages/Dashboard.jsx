@@ -62,7 +62,6 @@ const Dashboard = () => {
       }
     }
   };
-
   const handleCreateSubmit = async (data) => {
     try {
       const response = await axios.post(
@@ -75,10 +74,15 @@ const Dashboard = () => {
           },
         }
       );
+      console.log("Ответ (create):", response.data);
       setCards([...cards, response.data]);
       setShowCreateForm(false);
       setError(null);
     } catch (error) {
+      console.error(
+        "Ошибка создания:",
+        error.response ? error.response.data : error.message
+      );
       setError(error.response?.data?.error || t("dashboard.createError"));
     }
   };
@@ -95,6 +99,7 @@ const Dashboard = () => {
           },
         }
       );
+      console.log("Ответ (edit):", response.data);
       setCards(
         cards.map((card) => (card.id === editCard.id ? response.data : card))
       );
@@ -102,6 +107,10 @@ const Dashboard = () => {
       setEditCard(null);
       setError(null);
     } catch (error) {
+      console.error(
+        "Ошибка редактирования:",
+        error.response ? error.response.data : error.message
+      );
       setError(error.response?.data?.error || t("dashboard.editError"));
     }
   };
@@ -112,11 +121,28 @@ const Dashboard = () => {
     setError(null);
   };
 
-  const toggleEditForm = (card) => {
-    setEditCard(card);
-    setShowEditForm(!showEditForm);
-    setShowCreateForm(false);
-    setError(null);
+  const toggleEditForm = async (card) => {
+    if (!card) {
+      setEditCard(null);
+      setShowEditForm(false);
+      return;
+    }
+
+    try {
+      const response = await axios.get(
+        `http://localhost:8000/api/cards/${card.slug}/`,
+        {
+          headers: { Authorization: `Token ${token}` },
+        }
+      );
+      setEditCard(response.data); // теперь тут будут и social_links
+      setShowEditForm(true);
+      setShowCreateForm(false);
+      setError(null);
+    } catch (err) {
+      console.error("Ошибка загрузки карточки:", err);
+      setError(t("dashboard.loadCardError"));
+    }
   };
 
   return (

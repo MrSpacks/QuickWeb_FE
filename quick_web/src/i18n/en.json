@@ -29,6 +29,7 @@
   },
 
   "dashboard": {
+    "cards": " Create and Manage Your Cards",
     "titleCard": "Title",
     "slug": "Slug",
     "subtitle": "Subtitle",

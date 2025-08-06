@@ -148,16 +148,23 @@ const Dashboard = () => {
   return (
     <div className="dashboard-container">
       <header className="dashboard-header">
-        <LanguageSwitcher />
-        <LogoutButton />
+        <div className="logo">
+          <img src="/img/logo.jpg" alt="Logo" />
+        </div>
+        <div className="navbar">
+          <LanguageSwitcher />
+          <LogoutButton />
+        </div>
       </header>
-      <div className="cards-section">
-        <h2>{t("dashboard.cards")}</h2>
+      <div className="dashboard-content">
+        <h1>{t("dashboard.cards")}</h1>
         <Button
           text={t("dashboard.createCard")}
           onClick={toggleCreateForm}
           background="#28a745"
         />
+      </div>
+      <div className="cards-section">
         {showCreateForm && (
           <CardForm
             initialData={{}}

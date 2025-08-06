@@ -17,7 +17,7 @@ const LanguageSwitcher = () => {
 
   const style = {
     width: "100px",
-    height: "30px",
+    height: "36px",
     fontSize: "14px",
     padding: "5px",
     borderRadius: "5px",

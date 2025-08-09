@@ -1,10 +1,15 @@
 .landing-container {
   text-align: center;
-  padding: 50px;
-  max-width: 800px;
+  padding: 20px 20px;
+  max-width: 1200px;
   margin: 0 auto;
 }
-
+.landing_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
 .landing-container h1 {
   font-size: 2.5rem;
   margin-bottom: 20px;
@@ -14,26 +19,42 @@
   font-size: 1.2rem;
   margin-bottom: 30px;
 }
-
-.landing-buttons {
+.landing-nav {
   display: flex;
   gap: 20px;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.btn {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
+.nav-link {
   text-decoration: none;
-  border-radius: 5px;
   font-size: 1rem;
+  gap: 10px;
+  transition: all 0.3s ease;
+  color: black;
 }
 
-.btn:hover {
-  background-color: #0056b3;
+.nav-link:hover {
+  border-bottom: solid 1px black;
 }
 .language-switcher {
   display: flex;
   justify-content: center;
+}
+.mobile {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  .landing-container {
+    padding: 10px;
+  }
+  .desktop {
+    display: none;
+  }
+  .landing-container h1 {
+    font-size: 2rem;
+  }
+  .landing-container p {
+    font-size: 1rem;
+  }
 }

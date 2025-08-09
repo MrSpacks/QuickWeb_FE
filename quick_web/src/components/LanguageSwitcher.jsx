@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 
 // CZ: Komponent pro přepínání jazyka
 // RU: Компонент для переключения языка
-const LanguageSwitcher = () => {
+const LanguageSwitcher = (props) => {
   const { i18n } = useTranslation();
   const languages = [
     { code: "en", name: "English" },
@@ -27,7 +27,7 @@ const LanguageSwitcher = () => {
   };
   return (
     <select
-      className="language-switcher"
+      className={`language-switcher ${props.className || ""}`}
       onChange={handleLanguageChange}
       value={i18n.language}
       style={style}

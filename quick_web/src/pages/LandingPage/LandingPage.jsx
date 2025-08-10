@@ -3,7 +3,9 @@ import { useTranslation } from "react-i18next";
 import { Navigate, Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import "./LandingPage.css";
-import LanguageSwitcher from "../../components/LanguageSwitcher"; // Импортируем компонент переключения языка
+import LanguageSwitcher from "../../components/LanguageSwitcher";
+
+import Burger from "../../components/Burger/Burger";
 
 const LandingPage = () => {
   const { token } = useContext(AuthContext); // Получаем токен из контекста авторизации
@@ -20,6 +22,7 @@ const LandingPage = () => {
         <div className="logo">
           <img src="/img/logo.jpg" alt="EasyWord Logo" />
         </div>
+        <Burger className="mobile" />
         <nav className="landing-nav desktop">
           <Link className="nav-link" to="/about">
             {t("landing.about")}

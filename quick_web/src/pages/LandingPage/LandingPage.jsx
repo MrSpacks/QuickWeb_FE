@@ -6,6 +6,7 @@ import "./LandingPage.css";
 import LanguageSwitcher from "../../components/LanguageSwitcher";
 
 import Burger from "../../components/Burger/Burger";
+import Carousel from "../../components/Carousel/Carousel";
 
 const LandingPage = () => {
   const { token } = useContext(AuthContext); // Получаем токен из контекста авторизации
@@ -43,6 +44,7 @@ const LandingPage = () => {
       <h1>{t("landing.title")}</h1>
       <p>{t("landing.description")}</p>
       <div className="landing-buttons"></div>
+      <Carousel className="carousel" />
     </div>
   );
 };

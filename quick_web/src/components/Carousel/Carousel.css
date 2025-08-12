@@ -1,9 +1,7 @@
 .carousel-container {
   overflow: hidden;
-  width: 100%;
-  height: 400px;
-  /* display: flex; */
-  /* gap: 10px; */
+  display: flex;
+  margin-bottom: 30px;
 }
 
 .carousel-track {
@@ -14,9 +12,9 @@
 
 .carousel-slide {
   display: flex;
-  /* flex: none; */
-  width: 500px;
-  gap: 10px;
+  margin: 0 10px;
+  width: 300px;
+  height: 623px;
 }
 
 .carousel-slide img {

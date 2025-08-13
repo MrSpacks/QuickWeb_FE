@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import Button from "./Button/Button";
+import Button from "../Button/Button";
+import "./CardForm.css";
 
 const CardForm = ({ initialData, onSubmit, onCancel, isEditing }) => {
   const { t } = useTranslation();
@@ -73,33 +74,35 @@ const CardForm = ({ initialData, onSubmit, onCancel, isEditing }) => {
     <div className="create-form">
       <h3>{isEditing ? t("dashboard.editCard") : t("dashboard.createCard")}</h3>
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>{t("dashboard.titleCard")}</label>
-          <input
-            type="text"
-            name="title"
-            value={formData.title}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>{t("dashboard.slug")}</label>
-          <input
-            type="text"
-            name="slug"
-            value={formData.slug}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label>{t("dashboard.subtitle")}</label>
-          <input
-            type="text"
-            name="subtitle"
-            value={formData.subtitle}
-            onChange={handleChange}
-          />
+        <div className="group_section">
+          <div className="form-group">
+            <label>{t("dashboard.titleCard")}</label>
+            <input
+              type="text"
+              name="title"
+              value={formData.title}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>{t("dashboard.slug")}</label>
+            <input
+              type="text"
+              name="slug"
+              value={formData.slug}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label>{t("dashboard.subtitle")}</label>
+            <input
+              type="text"
+              name="subtitle"
+              value={formData.subtitle}
+              onChange={handleChange}
+            />
+          </div>
         </div>
         <div className="form-group">
           <label>{t("dashboard.description")}</label>
@@ -109,85 +112,94 @@ const CardForm = ({ initialData, onSubmit, onCancel, isEditing }) => {
             onChange={handleChange}
           />
         </div>
-        <div className="form-group">
-          <label>{t("dashboard.email")}</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
+        <div className="group_section">
+          <div className="form-group">
+            <label>{t("dashboard.email")}</label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label>{t("dashboard.phone")}</label>
+            <input
+              type="text"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+            />
+          </div>
         </div>
-        <div className="form-group">
-          <label>{t("dashboard.phone")}</label>
-          <input
-            type="text"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-          />
+        <div className="group_section">
+          <div className="form-group">
+            <label>{t("dashboard.avatar")}</label>
+            <input
+              type="file"
+              name="avatar"
+              accept="image/*"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label>{t("dashboard.background_image")}</label>
+            <input
+              type="file"
+              name="background_image"
+              accept="image/*"
+              onChange={handleChange}
+            />
+          </div>
         </div>
-        <div className="form-group">
-          <label>{t("dashboard.avatar")}</label>
-          <input
-            type="file"
-            name="avatar"
-            accept="image/*"
-            onChange={handleChange}
-          />
+        <div className="group_section">
+          <div className="form-group">
+            <label>{t("dashboard.template_id")}</label>
+            <select
+              name="template_id"
+              value={formData.template_id}
+              onChange={handleChange}
+              required
+            >
+              <option value="default">Default</option>
+              <option value="modern">Modern</option>
+              <option value="classic">Classic</option>
+            </select>
+          </div>
+          <div className="form-group">
+            <label>{t("dashboard.font_style")}</label>
+            <select
+              name="font_style"
+              value={formData.font_style}
+              onChange={handleChange}
+              required
+            >
+              <option value="Arial">Arial</option>
+              <option value="Times New Roman">Times New Roman</option>
+              <option value="Roboto">Roboto</option>
+            </select>
+          </div>
         </div>
-        <div className="form-group">
-          <label>{t("dashboard.background_image")}</label>
-          <input
-            type="file"
-            name="background_image"
-            accept="image/*"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label>{t("dashboard.template_id")}</label>
-          <select
-            name="template_id"
-            value={formData.template_id}
-            onChange={handleChange}
-            required
-          >
-            <option value="default">Default</option>
-            <option value="modern">Modern</option>
-            <option value="classic">Classic</option>
-          </select>
-        </div>
-        <div className="form-group">
-          <label>{t("dashboard.font_style")}</label>
-          <select
-            name="font_style"
-            value={formData.font_style}
-            onChange={handleChange}
-            required
-          >
-            <option value="Arial">Arial</option>
-            <option value="Times New Roman">Times New Roman</option>
-            <option value="Roboto">Roboto</option>
-          </select>
-        </div>
-        <div className="form-group">
-          <label>{t("dashboard.background_color")}</label>
-          <input
-            type="color"
-            name="background_color"
-            value={formData.background_color}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label>{t("dashboard.is_active")}</label>
-          <input
-            type="checkbox"
-            name="is_active"
-            checked={formData.is_active}
-            onChange={handleChange}
-          />
+        <div className="group_section">
+          <div className="form-group">
+            <label>{t("dashboard.background_color")}</label>
+            <input
+              className="form_control_color"
+              type="color"
+              name="background_color"
+              value={formData.background_color}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="form-group form_control_checkbox">
+            <label>{t("dashboard.is_active")}</label>
+            <input
+              type="checkbox"
+              name="is_active"
+              checked={formData.is_active}
+              onChange={handleChange}
+            />
+          </div>
         </div>
         <div className="form-group">
           <label>{t("dashboard.social_links")}</label>

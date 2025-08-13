@@ -6,7 +6,7 @@ import { AuthContext } from "../context/AuthContext";
 import LanguageSwitcher from "../components/LanguageSwitcher";
 import LogoutButton from "../components/LogoutButton";
 import Button from "../components/Button/Button";
-import CardForm from "../components/CardForm";
+import CardForm from "../components/Card/CardForm";
 import "./Dashboard.css";
 
 const Dashboard = () => {

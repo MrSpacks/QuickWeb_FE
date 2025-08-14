@@ -135,7 +135,7 @@ const Dashboard = () => {
           headers: { Authorization: `Token ${token}` },
         }
       );
-      setEditCard(response.data); // теперь тут будут и social_links
+      setEditCard(response.data);
       setShowEditForm(true);
       setShowCreateForm(false);
       setError(null);
@@ -188,7 +188,16 @@ const Dashboard = () => {
           <div className="cards-grid">
             {cards.map((card) => (
               <div key={card.id} className="card-item">
-                <h3>{card.title}</h3>
+                <div className="card_header">
+                  {card.avatar && (
+                    <img
+                      src={card.avatar}
+                      alt="Avatar"
+                      className="avatar_mini"
+                    />
+                  )}
+                  <h3>{card.title}</h3>
+                </div>
                 <p>
                   <Link to={`/${card.slug}`}>{t("dashboard.viewCard")}</Link>
                 </p>

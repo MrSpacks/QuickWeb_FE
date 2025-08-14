@@ -10,15 +10,12 @@ const PublicCard = () => {
   const [card, setCard] = useState(null);
   const [error, setError] = useState(null);
 
-  const BASE_URL = "http://127.0.0.1:8000"; // Базовый URL для медиа
-
+  const BASE_URL = "http://127.0.0.1:8000";
   useEffect(() => {
     const fetchCard = async () => {
       try {
-        console.log("Запрос к:", `http://127.0.0.1:8000/${slug}/`);
         const response = await axios.get(`http://127.0.0.1:8000/${slug}/`);
-        console.log("Ответ:", response.data);
-        // Преобразуем относительные пути в абсолютные
+
         setCard({
           ...response.data,
           avatar: response.data.avatar

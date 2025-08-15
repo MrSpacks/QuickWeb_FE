@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "../LanguageSwitcher";
 import "./Burger.css"; // Assuming you have a CSS file for styling
+import LogoutButton from "../LogoutButton";
 const Burger = () => {
   const { t } = useTranslation();
 
@@ -34,6 +35,7 @@ const Burger = () => {
           {t("landing.login")}
         </Link>
         <LanguageSwitcher className="mobile" />
+        <LogoutButton className="mobile" />
       </nav>
     </div>
   );

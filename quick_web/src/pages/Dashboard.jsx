@@ -8,6 +8,8 @@ import LogoutButton from "../components/LogoutButton";
 import Button from "../components/Button/Button";
 import CardForm from "../components/Card/CardForm";
 import "./Dashboard.css";
+import "./LandingPage/LandingPage.css";
+import Burger from "../components/Burger/Burger";
 
 const Dashboard = () => {
   const { t } = useTranslation();
@@ -147,14 +149,27 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-container">
-      <header className="dashboard-header">
+      <header className="landing_header">
         <div className="logo">
-          <img src="/img/logo.jpg" alt="Logo" />
+          <img src="/img/logo.jpg" alt="EasyWord Logo" />
         </div>
-        <div className="navbar">
-          <LanguageSwitcher />
-          <LogoutButton />
-        </div>
+        <Burger className="mobile" />
+        <nav className="landing-nav desktop">
+          <Link className="nav-link" to="/about">
+            {t("landing.about")}
+          </Link>
+          <Link className="nav-link" to="/contact">
+            {t("landing.contact")}
+          </Link>
+          <Link to="/register" className="nav-link ">
+            {t("landing.register")}
+          </Link>
+          <Link to="/login" className="nav-link">
+            {t("landing.login")}
+          </Link>
+        </nav>
+        <LanguageSwitcher className="desktop" />
+        <LogoutButton className="desktop" onLogout={logout} />
       </header>
       <div className="dashboard-content">
         <h1>{t("dashboard.cards")}</h1>

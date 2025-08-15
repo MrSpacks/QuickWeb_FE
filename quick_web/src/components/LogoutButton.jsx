@@ -5,7 +5,7 @@ import { AuthContext } from "../context/AuthContext";
 import Button from "./Button/Button";
 
 // Компонент кнопки выхода
-const LogoutButton = () => {
+const LogoutButton = (props) => {
   const { t } = useTranslation(); // Хук для переводов
   const { logout } = useContext(AuthContext); // Получаем функцию logout из AuthContext
   const navigate = useNavigate(); // Хук для перенаправления
@@ -18,6 +18,7 @@ const LogoutButton = () => {
 
   return (
     <Button
+      className={props.className}
       text={t("logout.button")}
       onClick={handleLogout}
       background="#dc3545"

@@ -67,3 +67,31 @@
   height: 50px;
   border-radius: 50%;
 }
+
+@media screen and (max-width: 768px) {
+  .desktop {
+    display: none !important;
+  }
+  .dashboard-container {
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100%;
+  }
+
+  .dashboard-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .landing-nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .landing-nav .nav-link {
+    margin: 5px 0;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+}

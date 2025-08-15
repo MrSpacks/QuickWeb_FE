@@ -2,7 +2,7 @@ import "./Button.css"; // Импортируем стили для кнопки
 const Button = (props) => {
   return (
     <button
-      className="button"
+      className={`${props.className} button`}
       onClick={props.onClick}
       type={props.type || "button"}
       style={{ background: props.background }}

@@ -202,7 +202,18 @@ const Dashboard = () => {
         ) : (
           <div className="cards-grid">
             {cards.map((card) => (
-              <div key={card.id} className="card-item">
+              <div
+                key={card.id}
+                className="card-item"
+                style={{
+                  backgroundColor: card.background_color,
+                  fontFamily: card.font_style,
+                  backgroundImage: card.background_image
+                    ? `url(${card.background_image})`
+                    : "none",
+                  backgroundSize: "cover",
+                }}
+              >
                 <div className="card_header">
                   {card.avatar && (
                     <img

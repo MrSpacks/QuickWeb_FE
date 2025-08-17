@@ -43,6 +43,7 @@
     "template_id": "Template",
     "font_style": "Font Style",
     "background_color": "Background Color",
+    "text_color": "Text Color",
     "social_links": "Social Links",
     "addLink": "Add Link",
     "remove": "Remove",

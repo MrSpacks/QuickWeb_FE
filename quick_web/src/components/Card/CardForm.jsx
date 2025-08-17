@@ -2,7 +2,13 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import Button from "../Button/Button";
 import "./CardForm.css";
-
+const FONTS = [
+  { value: "Arial", label: "Arial" },
+  { value: "Times New Roman", label: "Times New Roman" },
+  { value: "Courier New", label: "Courier New" },
+  { value: "Georgia", label: "Georgia" },
+  { value: "Verdana", label: "Verdana" },
+];
 const CardForm = ({ initialData, onSubmit, onCancel, isEditing }) => {
   const { t } = useTranslation();
   const [formData, setFormData] = useState({
@@ -15,6 +21,7 @@ const CardForm = ({ initialData, onSubmit, onCancel, isEditing }) => {
     template_id: initialData.template_id || "default",
     font_style: initialData.font_style || "Arial",
     background_color: initialData.background_color || "#FFFFFF",
+    text_color: initialData.text_color || "#000000",
     avatar: null,
     background_image: null,
     social_links: initialData.social_links || [],
@@ -173,21 +180,37 @@ const CardForm = ({ initialData, onSubmit, onCancel, isEditing }) => {
               value={formData.font_style}
               onChange={handleChange}
               required
+              style={{ fontFamily: formData.font_style }} // Применяем текущий шрифт к select
             >
-              <option value="Arial">Arial</option>
-              <option value="Times New Roman">Times New Roman</option>
-              <option value="Roboto">Roboto</option>
+              {FONTS.map((font) => (
+                <option
+                  key={font.value}
+                  value={font.value}
+                  style={{ fontFamily: font.value }}
+                  onClick={() => console.log(`Selected font: ${font.value}`)} // Отладка
+                >
+                  {font.label}
+                </option>
+              ))}
             </select>
           </div>
         </div>
         <div className="group_section">
-          <div className="form-group">
+          <div className="form-group color_group">
             <label>{t("dashboard.background_color")}</label>
             <input
               className="form_control_color"
               type="color"
               name="background_color"
               value={formData.background_color}
+              onChange={handleChange}
+            />
+            <label>{t("dashboard.text_color")}</label>
+            <input
+              className="form_control_color"
+              type="color"
+              name="text_color"
+              value={formData.text_color}
               onChange={handleChange}
             />
           </div>
@@ -203,7 +226,7 @@ const CardForm = ({ initialData, onSubmit, onCancel, isEditing }) => {
         </div>
         <div className="form-group">
           <label>{t("dashboard.social_links")}</label>
-          <div>
+          <div className="social_links_form">
             <input
               type="text"
               name="platform"

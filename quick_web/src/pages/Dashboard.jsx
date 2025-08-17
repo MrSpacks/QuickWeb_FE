@@ -207,6 +207,7 @@ const Dashboard = () => {
                 className="card-item"
                 style={{
                   backgroundColor: card.background_color,
+                  color: card.text_color,
                   fontFamily: card.font_style,
                   backgroundImage: card.background_image
                     ? `url(${card.background_image})`

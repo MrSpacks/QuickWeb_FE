@@ -40,6 +40,7 @@
     "phone": "Телефон",
     "avatar": "Аватар",
     "background_image": "Фоновое изображение",
+    "text_color": "Цвет текста",
     "template_id": "Шаблон",
     "font_style": "Стиль шрифта",
     "background_color": "Цвет фона",

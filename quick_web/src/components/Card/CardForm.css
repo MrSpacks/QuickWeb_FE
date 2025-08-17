@@ -26,6 +26,12 @@
   flex-direction: column;
 }
 
+.color_group {
+  display: flex;
+  gap: 20px;
+  flex-direction: row;
+}
+
 .form-group label {
   font-weight: 500;
   margin-bottom: 6px;
@@ -74,6 +80,11 @@
 }
 
 .social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.social_links_form {
   display: flex;
   flex-direction: column;
   gap: 10px;

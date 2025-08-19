@@ -46,12 +46,15 @@ const PublicCard = () => {
         backgroundColor: card.background_color,
         color: card.text_color,
         fontFamily: card.font_style,
-        backgroundImage: card.background_image
-          ? `url(${card.background_image})`
-          : "none",
-        backgroundSize: "cover",
+        // backgroundImage: card.background_image
+        //   ? `url(${card.background_image})`
+        //   : "none",
+        // backgroundSize: "cover",
       }}
     >
+      {card.background_image && (
+        <img src={card.background_image} alt="" className="card-bg" />
+      )}
       <div className="card-content">
         {card.avatar && (
           <img src={card.avatar} alt="Avatar" className="avatar" />

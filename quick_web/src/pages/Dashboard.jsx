@@ -208,6 +208,7 @@ const Dashboard = () => {
                 style={{
                   backgroundColor: card.background_color,
                   color: card.text_color,
+
                   fontFamily: card.font_style,
                   backgroundImage: card.background_image
                     ? `url(${card.background_image})`
@@ -225,19 +226,24 @@ const Dashboard = () => {
                   )}
                   <h3>{card.title}</h3>
                 </div>
-                <p>
-                  <Link to={`/${card.slug}`}>{t("dashboard.viewCard")}</Link>
-                </p>
-                <Button
-                  text={t("dashboard.edit")}
-                  onClick={() => toggleEditForm(card)}
-                  background="#007bff"
-                />
-                <Button
-                  text={t("dashboard.delete")}
-                  onClick={() => handleDelete(card.id)}
-                  background="#dc3545"
-                />
+
+                <div className="link_wrapper">
+                  <Link className="link" to={`/${card.slug}`}>
+                    {t("dashboard.viewCard")}
+                  </Link>
+                </div>
+                <div className="button_wrapper">
+                  <Button
+                    text={t("dashboard.edit")}
+                    onClick={() => toggleEditForm(card)}
+                    background="#007bff"
+                  />
+                  <Button
+                    text={t("dashboard.delete")}
+                    onClick={() => handleDelete(card.id)}
+                    background="#dc3545"
+                  />
+                </div>
               </div>
             ))}
           </div>

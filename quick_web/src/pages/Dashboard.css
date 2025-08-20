@@ -39,17 +39,19 @@
 
 .cards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 20px;
 }
 /* card items style */
 
 .card-item {
   display: flex;
+  width: 100%;
+  aspect-ratio: 9 / 17;
   flex-direction: column;
   background-color: #fff;
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 20px;
   padding: 15px;
   text-align: center;
   transition: all 0.3s ease;
@@ -113,7 +115,7 @@
     margin: 5px 0;
   }
 
-  .cards-grid {
+  /* .cards-grid {
     grid-template-columns: 1fr;
-  }
+  } */
 }

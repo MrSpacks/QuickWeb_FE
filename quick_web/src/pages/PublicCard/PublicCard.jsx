@@ -53,7 +53,7 @@ const PublicCard = () => {
       }}
     >
       {card.background_image && ( // а стало так
-        <img src={card.background_image} alt="" className="card-bg" />
+        <img className="card-bg" src={card.background_image} alt="" />
       )}
       <div className="card-content">
         {card.avatar && (

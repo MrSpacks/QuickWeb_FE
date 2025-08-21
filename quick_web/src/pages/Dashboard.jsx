@@ -210,12 +210,20 @@ const Dashboard = () => {
                   color: card.text_color,
 
                   fontFamily: card.font_style,
-                  backgroundImage: card.background_image
-                    ? `url(${card.background_image})`
-                    : "none",
-                  backgroundSize: "cover",
+                  // backgroundImage: card.background_image
+                  //   ? `url(${card.background_image})`
+                  //   : "none",
+                  // backgroundSize: "cover",
                 }}
               >
+                {/* background image */}
+                {card.background_image && (
+                  <img
+                    className="card_bg_small_card"
+                    src={card.background_image}
+                    alt={card.title}
+                  />
+                )}
                 <div className="card_header">
                   {card.avatar && (
                     <img

@@ -216,15 +216,16 @@ const Dashboard = () => {
                   // backgroundSize: "cover",
                 }}
               >
-                {/* background image */}
-                {card.background_image && (
-                  <img
-                    className="card_bg_small_card"
-                    src={card.background_image}
-                    alt={card.title}
-                  />
-                )}
                 <div className="card_header">
+                  <div className="eye_mobile"></div>
+                  {/* background image */}
+                  {card.background_image && (
+                    <img
+                      className="card_bg_small_card"
+                      src={card.background_image}
+                      alt={card.title}
+                    />
+                  )}
                   {card.avatar && (
                     <img
                       src={card.avatar}
@@ -232,7 +233,7 @@ const Dashboard = () => {
                       className="avatar_mini"
                     />
                   )}
-                  <h3>{card.title}</h3>
+                  <h3 className="card_title_mini">{card.title}</h3>
                 </div>
 
                 <div className="link_wrapper">
@@ -240,6 +241,24 @@ const Dashboard = () => {
                     {t("dashboard.viewCard")}
                   </Link>
                 </div>
+                {card.social_links?.length > 0 && (
+                  <div className="social-links">
+                    <h3>{t("publicCard.socialLinks")}</h3>
+                    <div className="social-links-grid">
+                      {card.social_links.map((link, index) => (
+                        <a
+                          key={index}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`social-link ${link.platform.toLowerCase()}`}
+                        >
+                          {link.platform}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                )}
                 <div className="button_wrapper">
                   <Button
                     text={t("dashboard.edit")}
@@ -252,6 +271,7 @@ const Dashboard = () => {
                     background="#dc3545"
                   />
                 </div>
+                <div className="bottom_line_mobile"></div>
               </div>
             ))}
           </div>

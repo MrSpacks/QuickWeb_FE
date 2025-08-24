@@ -45,7 +45,7 @@
 /* card items style */
 
 .card-item {
-  margin: auto;
+  margin: 10px;
   position: relative;
   display: flex;
   width: 100%;
@@ -59,6 +59,28 @@
   border: 4px solid #000000;
   box-shadow: 4px 4px 0px rgb(74, 74, 74), -4px -4px 0px rgb(74, 74, 74),
     -4px 4px 0px rgb(74, 74, 74), 4px -4px 0px rgb(74, 74, 74);
+}
+.card-item::before {
+  content: "";
+  position: absolute;
+  height: 50px;
+  width: 3px;
+  top: 40px;
+  left: -11px;
+  border-radius: 2px 0 0 2px;
+  background: rgb(59, 59, 59);
+  z-index: 6;
+}
+.card-item::after {
+  content: "";
+  position: absolute;
+  height: 30px;
+  width: 3px;
+  top: 100px;
+  right: -11px;
+  border-radius: 0 2px 2px 0;
+  background: rgb(59, 59, 59);
+  z-index: 6;
 }
 
 .card_bg_small_card {

@@ -56,10 +56,12 @@ const PublicCard = () => {
         <img className="card-bg" src={card.background_image} alt="" />
       )}
       <div className="card-content">
-        {card.avatar && (
-          <img src={card.avatar} alt="Avatar" className="avatar" />
-        )}
-        <h1>{card.title}</h1>
+        <div className="avatar-container">
+          {card.avatar && (
+            <img src={card.avatar} alt="Avatar" className="avatar" />
+          )}
+          <h1>{card.title}</h1>
+        </div>
         {card.subtitle && <h2>{card.subtitle}</h2>}
         {card.description && <p className="description">{card.description}</p>}
         <div className="contact-info">

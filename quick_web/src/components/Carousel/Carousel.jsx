@@ -3,10 +3,10 @@ import "./Carousel.css";
 
 export default function Carousel() {
   const images = [
-    "/img/carousel/slide1.jpg",
-    "/img/carousel/slide2.jpg",
-    "/img/carousel/slide3.jpg",
-    "/img/carousel/slide4.jpg",
+    "/img/carousel/slide1.png",
+    "/img/carousel/slide2.png",
+    "/img/carousel/slide3.png",
+    "/img/carousel/slide4.png",
   ];
 
   const carouselRef = useRef(null);

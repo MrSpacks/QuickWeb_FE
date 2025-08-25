@@ -1,10 +1,9 @@
 .public-card-container {
   position: relative;
   overflow: hidden;
-
   max-width: 600px;
   margin: 2rem auto;
-  padding: 2rem;
+  padding: 0 2rem 2rem 2rem;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -13,8 +12,8 @@
   position: absolute;
   inset: 0;
   width: 100%;
-  height: 20%;
-  /* object-fit: cover; как background-size: cover */
+  height: 200px;
+  object-fit: cover;
   z-index: 0;
   opacity: 0.8; /* можно делать затемнение */
 }
@@ -26,18 +25,22 @@
   flex-direction: column;
   gap: 1rem;
 }
-
+.avatar-container {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .avatar {
   width: 100px;
   height: 100px;
   border-radius: 50%;
   object-fit: cover;
-  margin: 0 auto;
+  /* margin: 0 auto; */
 }
 
 .description {
   font-size: 1.1rem;
-  color: #333;
 }
 
 .contact-info p {
@@ -55,8 +58,9 @@
   padding: 0.5rem 1rem;
   border-radius: 5px;
   text-decoration: none;
-  color: white;
+  color: inherit;
   font-weight: bold;
+  background-color: green;
 }
 
 .social-link.twitter {
@@ -76,4 +80,18 @@
   color: red;
   text-align: center;
   margin-top: 2rem;
+}
+
+@media (max-width: 600px) {
+  .public-card-container {
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    margin: 0;
+  }
+  .avatar {
+    width: 60px;
+    height: 60px;
+  }
 }

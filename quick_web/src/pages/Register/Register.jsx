@@ -4,6 +4,7 @@ import { Navigate, Link } from "react-router-dom"; // Navigate для редир
 import axios from "axios"; // Библиотека для HTTP-запросов к API.
 import { AuthContext } from "../../context/AuthContext";
 // import { AuthProvider } from "../../context/AuthProvider";
+import Header from "../../components/Header/Header"; // Компонент шапки сайта.
 import LanguageSwitcher from "../../components/LanguageSwitcher"; // Компонент для переключения языка.
 import "./Register.css"; // Стили для формы.
 
@@ -63,58 +64,59 @@ const Register = () => {
 
   // JSX для рендеринга формы.
   return (
-    <div className="register-container">
-      {/* Выпадающий список для смены языка */}
-      <LanguageSwitcher />
+    <div className="dashboard-container">
+      <Header />
 
-      {/* Заголовок формы с переводом */}
-      <h1>{t("register.title")}</h1>
+      <div className="register-container">
+        {/* Заголовок формы с переводом */}
+        <h1>{t("register.title")}</h1>
 
-      {/* Показываем ошибку, если она есть */}
-      {error && <p className="error">{error}</p>}
+        {/* Показываем ошибку, если она есть */}
+        {error && <p className="error">{error}</p>}
 
-      {/* Форма регистрации */}
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>{t("register.username")}</label>
-          <input
-            type="text"
-            name="username" // Имя поля соответствует ключу в formData
-            value={formData.username}
-            onChange={handleChange}
-            required // Обязательное поле
-          />
-        </div>
-        <div className="form-group">
-          <label>{t("register.email")}</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>{t("register.password")}</label>
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit" className="btn">
-          {t("register.submit")}
-        </button>
-      </form>
+        {/* Форма регистрации */}
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>{t("register.username")}</label>
+            <input
+              type="text"
+              name="username" // Имя поля соответствует ключу в formData
+              value={formData.username}
+              onChange={handleChange}
+              required // Обязательное поле
+            />
+          </div>
+          <div className="form-group">
+            <label>{t("register.email")}</label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>{t("register.password")}</label>
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <button type="submit" className="btn">
+            {t("register.submit")}
+          </button>
+        </form>
 
-      {/* Ссылка на страницу логина */}
-      <p>
-        {t("register.haveAccount")}{" "}
-        <Link to="/login">{t("register.login")}</Link>
-      </p>
+        {/* Ссылка на страницу логина */}
+        <p>
+          {t("register.haveAccount")}{" "}
+          <Link to="/login">{t("register.login")}</Link>
+        </p>
+      </div>
     </div>
   );
 };

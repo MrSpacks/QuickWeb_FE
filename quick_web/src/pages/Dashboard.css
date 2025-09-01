@@ -3,21 +3,21 @@
   margin: 20px auto;
   padding: 20px;
 }
-.navbar {
+/* .navbar {
   display: flex;
   gap: 10px;
   align-items: center;
-}
-.logo img {
+} */
+/* .logo img {
   height: 50px;
   width: auto;
-}
-.dashboard-header {
+} */
+/* .dashboard-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-}
+} */
 
 .dashboard-container h1 {
   font-size: 2rem;

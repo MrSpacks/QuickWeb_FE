@@ -4,31 +4,24 @@ import { useTranslation } from "react-i18next";
 import { AuthContext } from "../../context/AuthContext";
 import LanguageSwitcher from "../LanguageSwitcher";
 import LogoutButton from "../LogoutButton";
-import "./Burger.css";
+import Burger from "../Burger/Burger";
+import "./Header.css";
 
-const Burger = () => {
+const Header = () => {
   const { t } = useTranslation();
   const { token, logout } = useContext(AuthContext);
-  const location = useLocation();
-
-  const showMenu = () => {
-    const nav = document.querySelector("#nav");
-    nav.classList.toggle("active_bar");
-    const burger = document.querySelector(".burger-icon");
-    burger.classList.toggle("active_bar");
-  };
+  const location = useLocation(); // Для определения текущей страницы
 
   return (
-    <div className="burger">
-      <button className="burger-icon mobile" onClick={showMenu}>
-        <span className="bar1 bar"></span>
-        <span className="bar2 bar"></span>
-        <span className="bar3 bar"></span>
-      </button>
-      <nav id="nav" className="landing-nav-mobile">
+    <header className="landing_header">
+      <div className="logo">
+        <img src="/img/logo.jpg" alt="EasyWord Logo" />
+      </div>
+      <Burger className="mobile" />
+      <nav className="landing-nav desktop">
         <Link
           className={`nav-link ${
-            location.pathname === "/about" ? "active_bar" : ""
+            location.pathname === "/about" ? "active" : ""
           }`}
           to="/about"
         >
@@ -36,7 +29,7 @@ const Burger = () => {
         </Link>
         <Link
           className={`nav-link ${
-            location.pathname === "/contact" ? "active_bar" : ""
+            location.pathname === "/contact" ? "active" : ""
           }`}
           to="/contact"
         >
@@ -46,7 +39,7 @@ const Burger = () => {
           <>
             <Link
               className={`nav-link ${
-                location.pathname === "/register" ? "active_bar" : ""
+                location.pathname === "/register" ? "active" : ""
               }`}
               to="/register"
             >
@@ -54,7 +47,7 @@ const Burger = () => {
             </Link>
             <Link
               className={`nav-link ${
-                location.pathname === "/login" ? "active_bar" : ""
+                location.pathname === "/login" ? "active" : ""
               }`}
               to="/login"
             >
@@ -62,12 +55,11 @@ const Burger = () => {
             </Link>
           </>
         )}
-
-        {token && <LogoutButton className="mobile" onLogout={logout} />}
-        <LanguageSwitcher className="mobile" />
       </nav>
-    </div>
+      <LanguageSwitcher className="desktop" />
+      {token && <LogoutButton className="desktop" onLogout={logout} />}
+    </header>
   );
 };
 
-export default Burger;
+export default Header;

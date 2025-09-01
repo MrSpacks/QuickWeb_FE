@@ -3,13 +3,10 @@ import { useTranslation } from "react-i18next";
 import { Navigate, Link } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
-import LanguageSwitcher from "../components/LanguageSwitcher";
-import LogoutButton from "../components/LogoutButton";
 import Button from "../components/Button/Button";
 import CardForm from "../components/Card/CardForm";
+import Header from "../components/Header/Header"; // Новый импорт
 import "./Dashboard.css";
-import "./LandingPage/LandingPage.css";
-import Burger from "../components/Burger/Burger";
 
 const Dashboard = () => {
   const { t } = useTranslation();
@@ -64,6 +61,7 @@ const Dashboard = () => {
       }
     }
   };
+
   const handleCreateSubmit = async (data) => {
     try {
       const response = await axios.post(
@@ -149,28 +147,7 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-container">
-      <header className="landing_header">
-        <div className="logo">
-          <img src="/img/logo.jpg" alt="EasyWord Logo" />
-        </div>
-        <Burger className="mobile" />
-        <nav className="landing-nav desktop">
-          <Link className="nav-link" to="/about">
-            {t("landing.about")}
-          </Link>
-          <Link className="nav-link" to="/contact">
-            {t("landing.contact")}
-          </Link>
-          <Link to="/register" className="nav-link ">
-            {t("landing.register")}
-          </Link>
-          <Link to="/login" className="nav-link">
-            {t("landing.login")}
-          </Link>
-        </nav>
-        <LanguageSwitcher className="desktop" />
-        <LogoutButton className="desktop" onLogout={logout} />
-      </header>
+      <Header /> {/* Заменили header */}
       <div className="dashboard-content">
         <h1>{t("dashboard.cards")}</h1>
         <Button
@@ -208,17 +185,11 @@ const Dashboard = () => {
                 style={{
                   backgroundColor: card.background_color,
                   color: card.text_color,
-
                   fontFamily: card.font_style,
-                  // backgroundImage: card.background_image
-                  //   ? `url(${card.background_image})`
-                  //   : "none",
-                  // backgroundSize: "cover",
                 }}
               >
                 <div className="card_header">
                   <div className="eye_mobile"></div>
-                  {/* background image */}
                   {card.background_image && (
                     <img
                       className="card_bg_small_card"
@@ -235,7 +206,6 @@ const Dashboard = () => {
                   )}
                   <h3 className="card_title_mini">{card.title}</h3>
                 </div>
-
                 <div className="link_wrapper">
                   <Link className="link" to={`/${card.slug}`}>
                     {t("dashboard.viewCard")}

@@ -5,6 +5,7 @@ import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 import LanguageSwitcher from "../../components/LanguageSwitcher";
 import "./Login.css";
+import Header from "../../components/Header/Header";
 
 // Функциональный компонент для страницы логина
 const Login = () => {
@@ -42,38 +43,43 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <LanguageSwitcher />
-      <h1>{t("login.title")}</h1>
-      {error && <p className="error">{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>{t("login.username")}</label>
-          <input
-            type="text"
-            name="username"
-            value={formData.username}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>{t("login.password")}</label>
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit" className="btn">
-          {t("login.submit")}
-        </button>
-      </form>
-      <p>
-        {t("login.noAccount")} <Link to="/register">{t("login.register")}</Link>
-      </p>
+    <div className="dashboard-container">
+      <Header />
+
+      <div className="login-container">
+        {/* <LanguageSwitcher /> */}
+        <h1>{t("login.title")}</h1>
+        {error && <p className="error">{error}</p>}
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>{t("login.username")}</label>
+            <input
+              type="text"
+              name="username"
+              value={formData.username}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>{t("login.password")}</label>
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <button type="submit" className="btn">
+            {t("login.submit")}
+          </button>
+        </form>
+        <p>
+          {t("login.noAccount")}{" "}
+          <Link to="/register">{t("login.register")}</Link>
+        </p>
+      </div>
     </div>
   );
 };

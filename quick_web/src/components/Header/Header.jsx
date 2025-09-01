@@ -23,6 +23,14 @@ const Header = () => {
           className={`nav-link ${
             location.pathname === "/about" ? "active" : ""
           }`}
+          to="/"
+        >
+          {t("landing.home")}
+        </Link>
+        <Link
+          className={`nav-link ${
+            location.pathname === "/about" ? "active" : ""
+          }`}
           to="/about"
         >
           {t("landing.about")}

@@ -5,7 +5,8 @@
     "register": "Register",
     "login": "Login",
     "about": "About Us",
-    "contact": "Contact"
+    "contact": "Contact",
+    "home": "Home"
   },
   "register": {
     "title": "Register",
@@ -69,5 +70,17 @@
     "email": "Email:",
     "phone": "Phone:",
     "socialLinks": "Social Links"
+  },
+  "about": {
+    "title": "About Us",
+    "description": "QuickWeb is a user-friendly service that allows you to create personalized business cards with unique URLs and track visit statistics. Our mission is to help individuals and businesses make a lasting impression online. With QuickWeb, you can easily design your card, customize its appearance, and share it with the world. "
+  },
+  "contact": {
+    "title": "Contact Us",
+    "description": "If you have any questions or feedback, feel free to reach out to us!",
+    "address": "Address",
+    "email": "Email",
+    "phone": "Phone",
+    "portfolio": "Portfolio"
   }
 }

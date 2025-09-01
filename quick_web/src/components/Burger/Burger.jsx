@@ -28,6 +28,14 @@ const Burger = () => {
       <nav id="nav" className="landing-nav-mobile">
         <Link
           className={`nav-link ${
+            location.pathname === "/about" ? "active" : ""
+          }`}
+          to="/"
+        >
+          {t("landing.home")}
+        </Link>
+        <Link
+          className={`nav-link ${
             location.pathname === "/about" ? "active_bar" : ""
           }`}
           to="/about"

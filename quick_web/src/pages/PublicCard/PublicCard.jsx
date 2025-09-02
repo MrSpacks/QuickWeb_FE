@@ -9,13 +9,14 @@ const PublicCard = () => {
   const { slug } = useParams();
   const [card, setCard] = useState(null);
   const [error, setError] = useState(null);
+  const [showQr, setShowQr] = useState(false); // состояние для окна QR
 
   const BASE_URL = "http://127.0.0.1:8000";
+
   useEffect(() => {
     const fetchCard = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/${slug}/`);
-
+        const response = await axios.get(`${BASE_URL}/${slug}/`);
         setCard({
           ...response.data,
           avatar: response.data.avatar
@@ -39,6 +40,12 @@ const PublicCard = () => {
   if (error) return <div className="error">{error}</div>;
   if (!card) return <div>{t("publicCard.loading")}</div>;
 
+  // ссылка на QR для текущей страницы
+  const currentUrl = window.location.href;
+  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(
+    currentUrl
+  )}&size=250x250`;
+
   return (
     <div
       className={`public-card-container ${card.template_id}`}
@@ -46,15 +53,25 @@ const PublicCard = () => {
         backgroundColor: card.background_color,
         color: card.text_color,
         fontFamily: card.font_style,
-        // backgroundImage: card.background_image  было так
-        //   ? `url(${card.background_image})`
-        //   : "none",
-        // backgroundSize: "cover",
       }}
     >
-      {card.background_image && ( // а стало так
+      {card.background_image && (
         <img className="card-bg" src={card.background_image} alt="" />
       )}
+
+      {/* кнопка QR в углу */}
+      <button
+        className="qr-button"
+        onClick={() => setShowQr(true)}
+        title="Показать QR-код"
+      >
+        <img
+          className="qr_icon"
+          src="/qrcode-scan-svgrepo-com.svg"
+          alt="QR Code icon"
+        />
+      </button>
+
       <div className="card-content">
         <div className="avatar-container">
           {card.avatar && (
@@ -97,6 +114,19 @@ const PublicCard = () => {
           </div>
         )}
       </div>
+
+      {/* Модальное окно с QR */}
+      {showQr && (
+        <div className="qr-modal">
+          <div className="qr-modal-content">
+            <button className="qr-close" onClick={() => setShowQr(false)}>
+              ✖
+            </button>
+
+            <img src={qrUrl} alt="QR Code" />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

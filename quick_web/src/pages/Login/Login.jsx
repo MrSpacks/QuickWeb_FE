@@ -47,7 +47,6 @@ const Login = () => {
       <Header />
 
       <div className="login-container">
-        {/* <LanguageSwitcher /> */}
         <h1>{t("login.title")}</h1>
         {error && <p className="error">{error}</p>}
         <form onSubmit={handleSubmit}>

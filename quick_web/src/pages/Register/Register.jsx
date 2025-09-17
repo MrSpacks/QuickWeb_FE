@@ -1,14 +1,11 @@
 import React, { useState, useContext } from "react";
 import { useTranslation } from "react-i18next"; // Хук для доступа к переводам i18next.
-import { Navigate, Link } from "react-router-dom"; // Navigate для редиректа, Link для ссылок (на /login).
-import axios from "axios"; // Библиотека для HTTP-запросов к API.
+import { Navigate, Link } from "react-router-dom";
+import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
-// import { AuthProvider } from "../../context/AuthProvider";
-import Header from "../../components/Header/Header"; // Компонент шапки сайта.
-import LanguageSwitcher from "../../components/LanguageSwitcher"; // Компонент для переключения языка.
+import Header from "../../components/Header/Header";
 import "./Register.css"; // Стили для формы.
 
-// Функциональный компонент Register.
 const Register = () => {
   // Получаем функцию t для переводов и объект i18n для управления языком.
   const { t } = useTranslation();
@@ -25,7 +22,6 @@ const Register = () => {
     password: "",
   });
 
-  // Состояние для хранения сообщения об ошибке (например, "Username already exists").
   const [error, setError] = useState(null);
 
   // Если пользователь уже авторизован (токен есть), перенаправляем на /dashboard.
@@ -68,22 +64,17 @@ const Register = () => {
       <Header />
 
       <div className="register-container">
-        {/* Заголовок формы с переводом */}
         <h1>{t("register.title")}</h1>
-
-        {/* Показываем ошибку, если она есть */}
         {error && <p className="error">{error}</p>}
-
-        {/* Форма регистрации */}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label>{t("register.username")}</label>
             <input
               type="text"
-              name="username" // Имя поля соответствует ключу в formData
+              name="username"
               value={formData.username}
               onChange={handleChange}
-              required // Обязательное поле
+              required
             />
           </div>
           <div className="form-group">
@@ -110,7 +101,6 @@ const Register = () => {
             {t("register.submit")}
           </button>
         </form>
-
         {/* Ссылка на страницу логина */}
         <p>
           {t("register.haveAccount")}{" "}

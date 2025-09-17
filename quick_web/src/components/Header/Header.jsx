@@ -20,9 +20,7 @@ const Header = () => {
       <Burger className="mobile" />
       <nav className="landing-nav desktop">
         <Link
-          className={`nav-link ${
-            location.pathname === "/about" ? "active" : ""
-          }`}
+          className={`nav-link ${location.pathname === "/" ? "active" : ""}`}
           to="/"
         >
           {t("landing.home")}

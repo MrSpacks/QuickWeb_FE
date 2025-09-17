@@ -1,7 +1,12 @@
+// Компонент формы для создания и редактирования визитной карточки
+// Включает поля для всех атрибутов карточки, загрузку изображений и управление социальными ссылками
+
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import Button from "../Button/Button";
 import "./CardForm.css";
+
+// Список доступных шрифтов
 const FONTS = [
   { value: "Arial", label: "Arial" },
   { value: "Times New Roman", label: "Times New Roman" },
@@ -9,6 +14,12 @@ const FONTS = [
   { value: "Georgia", label: "Georgia" },
   { value: "Verdana", label: "Verdana" },
 ];
+
+// Компонент формы
+// InitialData используется для заполнения формы при редактировании
+// onSubmit вызывается при отправке формы
+// onCancel вызывается при отмене
+// isEditing указывает, находится ли форма в режиме редактирования
 const CardForm = ({ initialData, onSubmit, onCancel, isEditing }) => {
   const { t } = useTranslation();
   const [formData, setFormData] = useState({
@@ -30,6 +41,7 @@ const CardForm = ({ initialData, onSubmit, onCancel, isEditing }) => {
   });
   const [newSocialLink, setNewSocialLink] = useState({ platform: "", url: "" }); // Состояние для новой ссылки
 
+  // Обработка изменений в полях формы
   const handleChange = (e) => {
     const { name, value, files, type, checked } = e.target;
     setFormData({
@@ -53,14 +65,14 @@ const CardForm = ({ initialData, onSubmit, onCancel, isEditing }) => {
       setNewSocialLink({ platform: "", url: "" }); // Сбросить поля ввода после добавления
     }
   };
-
+  // Удаляем ссылку по индексу
   const removeSocialLink = (index) => {
     setFormData({
       ...formData,
       social_links: formData.social_links.filter((_, i) => i !== index),
     });
   };
-
+  // Обработка отправки формы
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = new FormData();
@@ -81,6 +93,8 @@ const CardForm = ({ initialData, onSubmit, onCancel, isEditing }) => {
     <div className="create-form">
       <h3>{isEditing ? t("dashboard.editCard") : t("dashboard.createCard")}</h3>
       <form onSubmit={handleSubmit}>
+        {" "}
+        {/* Обработчик отправки формы */}
         <div className="group_section">
           <div className="form-group">
             <label>{t("dashboard.titleCard")}</label>
@@ -187,7 +201,7 @@ const CardForm = ({ initialData, onSubmit, onCancel, isEditing }) => {
                   key={font.value}
                   value={font.value}
                   style={{ fontFamily: font.value }}
-                  onClick={() => console.log(`Selected font: ${font.value}`)} // Отладка
+                  onClick={() => console.log(`Selected font: ${font.value}`)} // Для отладки
                 >
                   {font.label}
                 </option>

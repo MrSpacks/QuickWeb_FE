@@ -3,9 +3,6 @@ import { useTranslation } from "react-i18next";
 import { Navigate, Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import "./LandingPage.css";
-import LanguageSwitcher from "../../components/LanguageSwitcher";
-
-import Burger from "../../components/Burger/Burger";
 import Carousel from "../../components/Carousel/Carousel";
 import Header from "../../components/Header/Header";
 
@@ -19,7 +16,7 @@ const LandingPage = () => {
   }
 
   return (
-    <>
+    <div className="dashboard-container">
       <div className="landing-container">
         <Header />
 
@@ -28,7 +25,7 @@ const LandingPage = () => {
         <div className="landing-buttons"></div>
       </div>
       <Carousel className="carousel" />
-    </>
+    </div>
   );
 };
 

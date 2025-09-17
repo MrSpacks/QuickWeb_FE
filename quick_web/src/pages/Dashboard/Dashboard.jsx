@@ -1,11 +1,14 @@
+// Этот компонент отображает панель управления пользователя с возможностью создания, редактирования и удаления карточек.
+// Он использует контекст аутентификации для проверки токена пользователя и взаимодействует с API для управления карточками.
+
 import { useState, useEffect, useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { Navigate, Link } from "react-router-dom";
 import axios from "axios";
-import { AuthContext } from "../context/AuthContext";
-import Button from "../components/Button/Button";
-import CardForm from "../components/Card/CardForm";
-import Header from "../components/Header/Header"; // Новый импорт
+import { AuthContext } from "../../context/AuthContext";
+import Button from "../../components/Button/Button";
+import CardForm from "../../components/Card/CardForm";
+import Header from "../../components/Header/Header";
 import "./Dashboard.css";
 
 const Dashboard = () => {
@@ -21,14 +24,17 @@ const Dashboard = () => {
     if (!token) return;
 
     const fetchData = async () => {
+      {
+        /* Получаем список карточек пользователя */
+      }
       try {
         const cardsResponse = await axios.get(
           "http://localhost:8000/api/cards/",
           {
-            headers: { Authorization: `Token ${token}` },
+            headers: { Authorization: `Token ${token}` }, // Используем токен для аутентификации
           }
         );
-        setCards(cardsResponse.data);
+        setCards(cardsResponse.data); // Обновляем состояние карточек
       } catch (error) {
         setError(t("dashboard.error"));
         if (error.response?.status === 401) {
@@ -40,9 +46,10 @@ const Dashboard = () => {
   }, [token, t, logout]);
 
   if (!token) {
-    return <Navigate to="/login" />;
+    return <Navigate to="/login" />; // Перенаправляем на страницу входа, если нет токена
   }
 
+  // Функция для удаления карточки
   const handleDelete = async (id) => {
     if (window.confirm(t("dashboard.confirmDelete"))) {
       try {
@@ -62,6 +69,7 @@ const Dashboard = () => {
     }
   };
 
+  // Функция для создания новой карточки
   const handleCreateSubmit = async (data) => {
     try {
       const response = await axios.post(
@@ -87,6 +95,7 @@ const Dashboard = () => {
     }
   };
 
+  // Функция для редактирования карточки
   const handleEditSubmit = async (data) => {
     try {
       const response = await axios.put(
@@ -114,13 +123,14 @@ const Dashboard = () => {
       setError(error.response?.data?.error || t("dashboard.editError"));
     }
   };
-
+  // Функция для переключения формы создания карточки
   const toggleCreateForm = () => {
     setShowCreateForm(!showCreateForm);
     setShowEditForm(false);
     setError(null);
   };
 
+  // Функция для переключения формы редактирования карточки
   const toggleEditForm = async (card) => {
     if (!card) {
       setEditCard(null);
@@ -147,7 +157,7 @@ const Dashboard = () => {
 
   return (
     <div className="dashboard-container">
-      <Header /> {/* Заменили header */}
+      <Header />
       <div className="dashboard-content">
         <h1>{t("dashboard.cards")}</h1>
         <Button

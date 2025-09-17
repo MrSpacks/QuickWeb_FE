@@ -1,0 +1,84 @@
+{
+  "landing": {
+    "title": "Vytvořte si osobní vizitku během několika minut!",
+    "description": "Jednoduchá služba pro vytváření personalizovaných vizitek s unikátními URL a statistikami návštěv.",
+    "register": "Registrace",
+    "login": "Přihlásit se",
+    "about": "O nás",
+    "contact": "Kontakt",
+    "home": "Domů"
+  },
+  "register": {
+    "title": "Registrace",
+    "username": "Uživatelské jméno",
+    "email": "E-mail",
+    "password": "Heslo",
+    "submit": "Zaregistrovat se",
+    "haveAccount": "Už máte účet?",
+    "login": "Přihlásit se",
+    "error": "Registrace selhala"
+  },
+  "login": {
+    "title": "Přihlášení",
+    "username": "Uživatelské jméno",
+    "password": "Heslo",
+    "submit": "Přihlásit se",
+    "noAccount": "Nemáte účet?",
+    "register": "Zaregistrovat se",
+    "error": "Neplatné přihlašovací údaje"
+  },
+  "logout": {
+    "button": "Odhlásit se"
+  },
+  "dashboard": {
+    "cards": "Vytvořte a spravujte své vizitky",
+    "titleCard": "Název",
+    "slug": "Slug",
+    "subtitle": "Podtitul",
+    "description": "Popis",
+    "email": "E-mail",
+    "phone": "Telefon",
+    "avatar": "Avatar",
+    "background_image": "Obrázek na pozadí",
+    "template_id": "Šablona",
+    "font_style": "Styl písma",
+    "background_color": "Barva pozadí",
+    "text_color": "Barva textu",
+    "social_links": "Sociální sítě",
+    "addLink": "Přidat odkaz",
+    "remove": "Odebrat",
+    "save": "Uložit",
+    "cancel": "Zrušit",
+    "createCard": "Vytvořit vizitku",
+    "editCard": "Upravit vizitku",
+    "error": "Došlo k chybě",
+    "createError": "Nepodařilo se vytvořit vizitku",
+    "editError": "Nepodařilo se upravit vizitku",
+    "deleteError": "Nepodařilo se smazat vizitku",
+    "noCards": "Žádné vizitky nejsou k dispozici",
+    "viewCard": "Zobrazit vizitku",
+    "edit": "Upravit",
+    "delete": "Smazat",
+    "confirmDelete": "Jste si jisti, že chcete tuto vizitku smazat?",
+    "is_active": "Aktivní"
+  },
+  "publicCard": {
+    "loading": "Načítání...",
+    "error": "Vizitka nenalezena",
+    "email": "E-mail:",
+    "phone": "Telefon:",
+    "socialLinks": "Sociální sítě"
+  },
+  "about": {
+    "title": "O nás",
+    "description": "QuickWeb je uživatelsky přívětivá služba, která vám umožňuje vytvářet personalizované vizitky s unikátními URL a sledovat statistiky návštěv. Naším posláním je pomoci jednotlivcům a firmám zanechat trvalý dojem online. S QuickWeb můžete snadno navrhnout svou vizitku, přizpůsobit její vzhled a sdílet ji se světem."
+  },
+  "contact": {
+    "title": "Kontaktujte nás",
+    "description": "Pokud máte nějaké otázky nebo zpětnou vazbu, neváhejte nás kontaktovat!",
+    "address": "Adresa",
+    "email": "E-mail",
+    "phone": "Telefon",
+    "portfolio": "Portfolio"
+  }
+}

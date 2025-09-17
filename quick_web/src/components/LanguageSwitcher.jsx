@@ -1,15 +1,12 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
-// CZ: Komponent pro přepínání jazyka
-// RU: Компонент для переключения языка
 const LanguageSwitcher = (props) => {
   const { i18n } = useTranslation();
   const languages = [
     { code: "en", name: "English" },
     { code: "ru", name: "Русский" },
-    // CZ: pak zde přidejte další jazyky, pokud je potřeba
-    // RU: добавьте другие языки, если нужно
+    { code: "cs", name: "Čeština" },
   ];
   const handleLanguageChange = (event) => {
     i18n.changeLanguage(event.target.value);

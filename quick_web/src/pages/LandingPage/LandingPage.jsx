@@ -16,16 +16,18 @@ const LandingPage = () => {
   }
 
   return (
-    <div className="dashboard-container">
-      <div className="landing-container">
-        <Header />
+    <>
+      <div className="dashboard-container">
+        <div className="landing-container">
+          <Header />
 
-        <h1>{t("landing.title")}</h1>
-        <p>{t("landing.description")}</p>
-        <div className="landing-buttons"></div>
+          <h1>{t("landing.title")}</h1>
+          <p>{t("landing.description")}</p>
+          <div className="landing-buttons"></div>
+        </div>
       </div>
       <Carousel className="carousel" />
-    </div>
+    </>
   );
 };
 

@@ -131,8 +131,8 @@
 }
 .link_wrapper {
   margin: auto;
-  padding: 10px;
-  width: 48%;
+  padding: 10px 15px;
+  /* width: 48%; */
   /* height: 100%; */
   border: 1px solid #dddddd7f;
   border-radius: 5px;

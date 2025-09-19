@@ -225,7 +225,7 @@ const Dashboard = () => {
                   <div className="social-links">
                     <h3>{t("publicCard.socialLinks")}</h3>
                     <div className="social-links-grid">
-                      {card.social_links.slice(0, 3).map((link, index) => (
+                      {card.social_links.slice(0, 2).map((link, index) => (
                         <a
                           key={index}
                           href={link.url}

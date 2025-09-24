@@ -5,6 +5,7 @@ import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 import Header from "../../components/Header/Header";
 import "./Register.css"; // Стили для формы.
+import { API_BASE_URL } from "../config";
 
 const Register = () => {
   // Получаем функцию t для переводов и объект i18n для управления языком.
@@ -42,7 +43,7 @@ const Register = () => {
       // Отправляем POST-запрос на /api/register/ с данными формы.
       // Бэкенд ожидает { username, email, password } и возвращает { token } при успехе.
       const response = await axios.post(
-        "http://localhost:8000/api/register/",
+        `${API_BASE_URL}api/register/`,
         formData
       );
 

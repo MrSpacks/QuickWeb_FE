@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { API_BASE_URL } from "../config"; // Импорт из config.js
 import "./PublicCard.css";
 
 const PublicCard = () => {
@@ -9,21 +10,19 @@ const PublicCard = () => {
   const { slug } = useParams();
   const [card, setCard] = useState(null);
   const [error, setError] = useState(null);
-  const [showQr, setShowQr] = useState(false); // состояние для окна QR
-
-  const BASE_URL = "http://127.0.0.1:8000";
+  const [showQr, setShowQr] = useState(false);
 
   useEffect(() => {
     const fetchCard = async () => {
       try {
-        const response = await axios.get(`${BASE_URL}/${slug}/`);
+        const response = await axios.get(`${API_BASE_URL}${slug}/`);
         setCard({
           ...response.data,
           avatar: response.data.avatar
-            ? `${BASE_URL}${response.data.avatar}`
+            ? `${API_BASE_URL}${response.data.avatar}`
             : null,
           background_image: response.data.background_image
-            ? `${BASE_URL}${response.data.background_image}`
+            ? `${API_BASE_URL}${response.data.background_image}`
             : null,
         });
       } catch (err) {
@@ -59,7 +58,6 @@ const PublicCard = () => {
         <img className="card-bg" src={card.background_image} alt="" />
       )}
 
-      {/* кнопка QR в углу */}
       <button
         className="qr-button"
         onClick={() => setShowQr(true)}
@@ -115,14 +113,12 @@ const PublicCard = () => {
         )}
       </div>
 
-      {/* Модальное окно с QR */}
       {showQr && (
         <div className="qr-modal">
           <div className="qr-modal-content">
             <button className="qr-close" onClick={() => setShowQr(false)}>
               ✖
             </button>
-
             <img src={qrUrl} alt="QR Code" />
           </div>
         </div>

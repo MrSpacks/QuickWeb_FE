@@ -10,6 +10,7 @@ import Button from "../../components/Button/Button";
 import CardForm from "../../components/Card/CardForm";
 import Header from "../../components/Header/Header";
 import "./Dashboard.css";
+import { API_BASE_URL } from "../config";
 
 const Dashboard = () => {
   const { t } = useTranslation();
@@ -28,12 +29,9 @@ const Dashboard = () => {
         /* Получаем список карточек пользователя */
       }
       try {
-        const cardsResponse = await axios.get(
-          "http://localhost:8000/api/cards/",
-          {
-            headers: { Authorization: `Token ${token}` }, // Используем токен для аутентификации
-          }
-        );
+        const cardsResponse = await axios.get(`${API_BASE_URL}api/cards/`, {
+          headers: { Authorization: `Token ${token}` }, // Используем токен для аутентификации
+        });
         setCards(cardsResponse.data); // Обновляем состояние карточек
       } catch (error) {
         setError(t("dashboard.error"));
@@ -55,7 +53,7 @@ const Dashboard = () => {
       try {
         const card = cards.find((c) => c.id === id);
         if (!card) throw new Error("Card not found");
-        await axios.delete(`http://localhost:8000/api/cards/${card.slug}/`, {
+        await axios.delete(`${API_BASE_URL}api/cards/${card.slug}/`, {
           headers: { Authorization: `Token ${token}` },
         });
         setCards(cards.filter((card) => card.id !== id));
@@ -72,16 +70,12 @@ const Dashboard = () => {
   // Функция для создания новой карточки
   const handleCreateSubmit = async (data) => {
     try {
-      const response = await axios.post(
-        "http://localhost:8000/api/cards/",
-        data,
-        {
-          headers: {
-            Authorization: `Token ${token}`,
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const response = await axios.post(`${API_BASE_URL}api/cards/`, data, {
+        headers: {
+          Authorization: `Token ${token}`,
+          "Content-Type": "multipart/form-data",
+        },
+      });
       console.log("Ответ (create):", response.data);
       setCards([...cards, response.data]);
       setShowCreateForm(false);
@@ -99,7 +93,7 @@ const Dashboard = () => {
   const handleEditSubmit = async (data) => {
     try {
       const response = await axios.put(
-        `http://localhost:8000/api/cards/${editCard.slug}/`,
+        `${API_BASE_URL}api/cards/${editCard.slug}/`,
         data,
         {
           headers: {
@@ -140,7 +134,7 @@ const Dashboard = () => {
 
     try {
       const response = await axios.get(
-        `http://localhost:8000/api/cards/${card.slug}/`,
+        `${API_BASE_URL}api/cards/${card.slug}/`,
         {
           headers: { Authorization: `Token ${token}` },
         }

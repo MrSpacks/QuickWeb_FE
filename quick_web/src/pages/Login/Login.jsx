@@ -1,11 +1,11 @@
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { Navigate, Link } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
-import LanguageSwitcher from "../../components/LanguageSwitcher";
 import "./Login.css";
 import Header from "../../components/Header/Header";
+import { API_BASE_URL } from "../config";
 
 // Функциональный компонент для страницы логина
 const Login = () => {
@@ -31,10 +31,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:8000/api/login/",
-        formData
-      );
+      const response = await axios.post(`${API_BASE_URL}api/login/`, formData);
       login(response.data.token); // Сохраняем токен через AuthContext
       setError(null);
     } catch (err) {

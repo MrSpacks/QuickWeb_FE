@@ -5,7 +5,7 @@ import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 import "./Login.css";
 import Header from "../../components/Header/Header";
-import { API_BASE_URL } from "../config";
+import { API_BASE_URL } from "../../../config";
 
 // Функциональный компонент для страницы логина
 const Login = () => {

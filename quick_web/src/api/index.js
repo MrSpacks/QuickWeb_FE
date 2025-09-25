@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_BASE_URL } from "../pages/config";
+import { API_BASE_URL } from "../../config";
 // import { AuthContext } from "../context/AuthContext";
 
 const api = axios.create({

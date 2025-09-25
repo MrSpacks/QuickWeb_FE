@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { API_BASE_URL } from "../config"; // Импорт из config.js
+import { API_BASE_URL } from "../../../config"; // Импорт из config.js
 import "./PublicCard.css";
 
 const PublicCard = () => {
@@ -19,10 +19,16 @@ const PublicCard = () => {
         setCard({
           ...response.data,
           avatar: response.data.avatar
-            ? `${API_BASE_URL}${response.data.avatar}`
+            ? `${API_BASE_URL.replace(
+                /\/$/,
+                ""
+              )}/${response.data.avatar.replace(/^\//, "")}`
             : null,
           background_image: response.data.background_image
-            ? `${API_BASE_URL}${response.data.background_image}`
+            ? `${API_BASE_URL.replace(
+                /\/$/,
+                ""
+              )}/${response.data.background_image.replace(/^\//, "")}`
             : null,
         });
       } catch (err) {
@@ -39,7 +45,7 @@ const PublicCard = () => {
   if (error) return <div className="error">{error}</div>;
   if (!card) return <div>{t("publicCard.loading")}</div>;
 
-  // ссылка на QR для текущей страницы
+  // Публичный URL backend для QR-кода
   const currentUrl = window.location.href;
   const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(
     currentUrl

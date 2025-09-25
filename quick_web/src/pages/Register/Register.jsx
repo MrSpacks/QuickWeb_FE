@@ -5,7 +5,7 @@ import axios from "axios";
 import { AuthContext } from "../../context/AuthContext";
 import Header from "../../components/Header/Header";
 import "./Register.css"; // Стили для формы.
-import { API_BASE_URL } from "../config";
+import { API_BASE_URL } from "../../../config";
 
 const Register = () => {
   // Получаем функцию t для переводов и объект i18n для управления языком.

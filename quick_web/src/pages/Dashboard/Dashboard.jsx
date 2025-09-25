@@ -10,7 +10,7 @@ import Button from "../../components/Button/Button";
 import CardForm from "../../components/Card/CardForm";
 import Header from "../../components/Header/Header";
 import "./Dashboard.css";
-import { API_BASE_URL } from "../config";
+import { API_BASE_URL } from "../../../config";
 
 const Dashboard = () => {
   const { t } = useTranslation();
